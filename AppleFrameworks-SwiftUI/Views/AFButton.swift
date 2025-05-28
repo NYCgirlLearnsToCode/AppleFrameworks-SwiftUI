@@ -18,7 +18,7 @@ struct AFButton: View {
             .frame(width: 280, height: 50)
             .background(.red)
             .foregroundStyle(.white)
-            .cornerRadius(10)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
