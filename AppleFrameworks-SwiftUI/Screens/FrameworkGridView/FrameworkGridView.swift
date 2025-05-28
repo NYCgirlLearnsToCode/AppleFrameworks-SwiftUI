@@ -15,6 +15,7 @@ struct FrameworkGridView: View {
 
     var body: some View {
         NavigationView {
+            // List is the SwiftUI version of tableview
             List {
                 ForEach(MockData.frameworks) { framework in
                     NavigationLink(destination: FrameworkDetailView(framework: framework)) {
