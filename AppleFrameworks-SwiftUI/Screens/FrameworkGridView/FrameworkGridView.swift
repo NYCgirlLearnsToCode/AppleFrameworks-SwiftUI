@@ -15,24 +15,16 @@ struct FrameworkGridView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns) {
-                    ForEach(MockData.frameworks) { framework in
+            List {
+                ForEach(MockData.frameworks) { framework in
+                    NavigationLink(destination: FrameworkDetailView(framework: framework)) {
                         FrameworkTitleView(framework: framework)
-                            .onTapGesture {
-                                viewModel.selectedFramework = framework
-                            }
                     }
                 }
             }
             .navigationTitle("🍎 Frameworks")
-            .sheet(isPresented: $viewModel.isShowingDetailView) {
-                if let framework = viewModel.selectedFramework {
-                    FrameworkDetailView(framework: framework,
-                                        isShowingDetailView: $viewModel.isShowingDetailView)
-                }
-            }
         }
+        .tint(Color(.label))
     }
 }
 
