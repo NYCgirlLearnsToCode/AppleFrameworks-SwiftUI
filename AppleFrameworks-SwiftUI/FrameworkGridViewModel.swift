@@ -16,7 +16,6 @@ final class FrameworkGridViewModel: ObservableObject {
         }
     }
     
-    
-    
     @Published var isShowingDetailView = false
+    @Published var tappedOnLearnMore = false
 }
