@@ -14,18 +14,22 @@ struct FrameworkGridView: View {
     @StateObject var viewModel = FrameworkGridViewModel()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 // similar to collectionview, not as customizable
                 LazyVGrid(columns: viewModel.columns) {
                     ForEach(MockData.frameworks) { framework in
-                        FrameworkTitleView(framework: framework)
+                        NavigationLink(value: framework) {
+                            FrameworkTitleView(framework: framework)
+                        }
                     }
                 }
             }
             .navigationTitle("🍎 Frameworks")
+            .navigationDestination(for: Framework.self) { framework in
+                FrameworkDetailView(framework: framework)
+            }
         }
-        .tint(Color(.label))
     }
 }
 
